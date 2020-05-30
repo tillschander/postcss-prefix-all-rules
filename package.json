@@ -1,5 +1,5 @@
 {
-  "name": "postcss-prefix-all-rules",
+  "name": "@tillschander/postcss-prefix-all-rules",
   "version": "1.0.0",
   "description": "PostCSS plugin to prepend a selector in front of all your rules.",
   "keywords": [
