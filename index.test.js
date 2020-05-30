@@ -8,10 +8,24 @@ async function run (input, output, opts) {
   expect(result.warnings()).toHaveLength(0)
 }
 
-/* Write tests here
+async function runWarning (input, output, opts) {
+  let result = await postcss([plugin(opts)]).process(input, { from: undefined })
+  expect(result.css).toEqual(output)
+  expect(result.warnings()).toHaveLength(1)
+}
 
-it('does something', async () => {
-  await run('a{ }', 'a{ }', { })
+it('warns about a missing or empty prefix option', async () => {
+  await runWarning('a{ }', 'a{ }', { })
 })
 
-*/
+it('adds a prefix to simple rules', async () => {
+  await run('a{ }', '.pre a{ }', { prefix: '.pre' })
+})
+
+it('adds a prefix to comma separated rules', async () => {
+  await run('a{ }, b{ }', '.pre a{ }, .pre b{ }', { prefix: '.pre' })
+})
+
+it('respects whitespace', async () => {
+  await run('a   { }, b { }', '.pre a   { }, .pre b { }', { prefix: '.pre' })
+})

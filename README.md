@@ -5,15 +5,19 @@
 [PostCSS]: https://github.com/postcss/postcss
 
 ```css
-.foo {
-    /* Input example */
-}
+/* Input example */
+.foo { }
+
+.bar,
+.baz { }
 ```
 
 ```css
-.foo {
-  /* Output example */
-}
+/* Output example */
+.pre .foo { }
+
+.pre .bar,
+.pre .baz { }
 ```
 
 ## Usage
@@ -27,7 +31,7 @@ If you already use PostCSS, add the plugin to plugins list:
 ```diff
 module.exports = {
   plugins: [
-+   require('postcss-prefix-all-rules'),
++   require('postcss-prefix-all-rules', { prefix: '.pre' }),
     require('autoprefixer')
   ]
 }

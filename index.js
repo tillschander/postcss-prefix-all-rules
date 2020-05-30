@@ -1,22 +1,32 @@
-const postcss = require('postcss');
+const postcss = require('postcss')
 const defaultOptions = {
   prefix: ''
-};
+}
 
 module.exports = postcss.plugin('postcss-prefix-all-rules', userOptions => {
-  const options = Object.assign({}, defaultOptions, userOptions);
+  let options = Object.assign({}, defaultOptions, userOptions)
 
   return (root, result) => {
-    root.walkRules(function (rule) {
-      let selectors = rule.selector.split(',');
+    if (options.prefix.trim() === '') {
+      return result.warn('No prefix spcified.')
+    }
+
+    root.walkRules(rule => {
+      let selectors = rule.selector.split(',')
 
       selectors = selectors.map(selector => {
-        let matchArray = selector.match(/(\s*)(\S+)/i);
+        let matchArray = selector.match(/(\s*)(\S+)/i)
+
+        if (selector.length === 0) {
+          return selector
+        }
 
         return matchArray[1] + options.prefix + ' ' + matchArray[2]
-      });
+      })
 
-      rule.selector = selectors.join(',');
-    });
+      rule.selector = selectors.join(',')
+    })
+
+    return result
   }
 })
