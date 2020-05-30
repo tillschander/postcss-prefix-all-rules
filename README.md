@@ -31,7 +31,7 @@ If you already use PostCSS, add the plugin to plugins list:
 ```diff
 module.exports = {
   plugins: [
-+   require('postcss-prefix-all-rules', { prefix: '.pre' }),
++   require('postcss-prefix-all-rules')({ prefix: '.pre' }),
     require('autoprefixer')
   ]
 }
