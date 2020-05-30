@@ -1,6 +1,6 @@
 # PostCSS Prefix All Rules
 
-[PostCSS] plugin to prepend a selector in front of all your rules..
+[PostCSS] plugin to prepend a selector in front of all your rules.
 
 [PostCSS]: https://github.com/postcss/postcss
 
