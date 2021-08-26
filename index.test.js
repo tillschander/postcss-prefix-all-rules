@@ -22,6 +22,14 @@ it('adds a prefix to simple rules', async () => {
   await run('a{ }', '.pre a{ }', { prefix: '.pre' })
 })
 
+it('adds a prefix to nested rules', async () => {
+  await run('.foo p { }', '.pre .foo p { }', { prefix: '.pre' })
+})
+
+it('adds a prefix to complex rules', async () => {
+  await run('.foo:not(.bar) { }', '.pre .foo:not(.bar) { }', { prefix: '.pre' })
+})
+
 it('adds a prefix to comma separated rules', async () => {
   await run('a{ }, b{ }', '.pre a{ }, .pre b{ }', { prefix: '.pre' })
 })

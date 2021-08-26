@@ -15,7 +15,7 @@ module.exports = postcss.plugin('postcss-prefix-all-rules', userOptions => {
       let selectors = rule.selector.split(',')
 
       selectors = selectors.map(selector => {
-        let matchArray = selector.match(/(\s*)(\S+)/i)
+        let matchArray = selector.match(/(\s*)(\S+.*)/i)
 
         if (selector.length === 0) {
           return selector
