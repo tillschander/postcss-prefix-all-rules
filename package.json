@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": "tillschander/postcss-prefix-all-rules",
   "dependencies": {
-    "postcss": "^7.0.18"
+    "postcss": "^8.4.31"
   },
   "devDependencies": {
     "@logux/eslint-config": "^33.0.0",
